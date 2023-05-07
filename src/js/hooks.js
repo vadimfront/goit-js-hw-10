@@ -1,4 +1,4 @@
-import { countryInfo, countryList, inputEl } from './constants';
+import { countryInfo, countryList } from './constants';
 
 function useSingleCountry(res) {
   const {
@@ -19,12 +19,9 @@ function useSingleCountry(res) {
 }
 
 function useCountryList(res) {
-  return res.reduce(
-    (accumulator, { name: { official }, flags: { svg }, ...rest }) => {
-      return [...accumulator, { official, svg }];
-    },
-    []
-  );
+  return res.reduce((accumulator, { name: { official }, flags: { svg } }) => {
+    return [...accumulator, { official, svg }];
+  }, []);
 }
 
 function useClearResults() {
